@@ -1,0 +1,23 @@
+<div class="regapp">
+<h1><%= current_user.name + "'s web-apps "%></h1>
+<div class="row">
+  <div class="col-md-8">
+    <% @regapps.each do |regapp| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to regapp.name, regapp %>
+          </h4>
+          <small>
+            <%= link_to regapp.url %>
+          </small>
+        </div>
+      </div>
+    <% end %>
+    <%= will_paginate @regapps %>
+  </div>
+  <div class="col-md-4">
+      <%= link_to "new web app", new_user_regapp_path, class: 'btn btn-success' %>
+  </div>
+</div>
+</div>

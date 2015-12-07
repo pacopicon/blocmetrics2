@@ -1,0 +1,7 @@
+<% if @regapp.valid? %>
+$('.js-regapps').append("<%= escape_javascript(render(@regapp)) %>");
+$('.new-regapp').html("<%= escape_javascript(render partial: 'regapps/form', locals: {user: @user, regapp: @new_regapp}) %>");
+$('.js-regapps-count').html("number of regapps registered:  <%= pluralize(@regapp.user.regapps.count, 'registered application') %>");
+<% else %>
+$('.new-regapp').html("<%= escape_javascript(render partial: 'regapps/form', locals: {user: @user, regapp: @regapp}) %>");
+<% end %>

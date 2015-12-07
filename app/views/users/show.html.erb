@@ -1,0 +1,13 @@
+<div class="user_show">
+  <h1><%= current_user.name + "'s profile" %></h1>
+    <p>member since <%= @user.created_at.strftime('%A')%>, <%= @user.created_at.strftime('%B')%> <%= @user.created_at.strftime('%-d')%>, <%= @user.created_at.strftime('%Y')%></p>
+  <div class='js-regapps-count'>
+    <%= pluralize(@user.regapps.count, 'registered applications') %>
+  </div>
+  <div class="js-regapps">
+    <%= render partial: 'regapps/regapp', collection: @regapps %>
+  </div>
+<div class="new-regapp">
+<%= render partial: 'regapps/form', locals: {user: @user, regapp: @regapp} %>
+</div>
+</div>

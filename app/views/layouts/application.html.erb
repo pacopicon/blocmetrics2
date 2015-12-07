@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blocmetrics2</title>
+  <title>blocmetrics</title>
+  <meta name= "viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li><%= link_to "home", root_path %></li>
+      <li><%= link_to "about", welcome_about_path %></li>
 
+      <div class="pull-right user-info">
+        <% if current_user %>
+          <%= link_to (current_user.name || current_user.email)+"'s profile", @user, class: 'btn btn-info' %>      <%= link_to "sign out", destroy_user_session_path, class: 'btn btn-info', method: :delete %>
+        <% else %>
+          <%= link_to "sign in", new_user_session_path, class: 'btn btn-info' %>
+        <% end %>
+      </div>
+    </ul>
 <%= yield %>
-
+</div>
 </body>
 </html>
