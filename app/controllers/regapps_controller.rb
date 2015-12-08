@@ -5,14 +5,34 @@ class RegappsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
+    @regapp = current_user.regapps.find(params[:id])
+    @regapp.user = current_user
+
+  end
+
+  def new
+    @regapp = Regapp.new
+  end
+
+  def edit
     @regapp = current_user.regapps.find(params[:id])
   end
 
-  def create
-    @user = User.find(params[:user_id])
-    @regapps = @user.regapps
+  def update
+    @regapp = Regapp.find(params[:id])
+    if @regapp.update_attributes(regapp_params)
+      flash[:notice] = "the application was updated."
+      redirect_to @user.regapp
+    else
+      flash[:error] = "there was an error saving the application.  Please try again!"
+      render :edit
+    end
+  end
 
-    @regapp = Regapp.new(regapp_params)
+  def create
+    @user = current_user
+    @regapp = current_user.regapps.build(regapp_params)
     @regapp.user = current_user
     @new_regapp = Regapp.new
 

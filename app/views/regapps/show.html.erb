@@ -1,2 +1,11 @@
-<h1>Regapps#show</h1>
-<p>Find me in app/views/regapps/show.html.erb</p>
+<div class="regapp_show">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="body">
+  <%= @regapp.name %><br>
+  <%= link_to @regapp.url, "#{@regapp.url}" %><br>
+  tracking since <%= @regapp.created_at.strftime('%A')%>, <%= @regapp.created_at.strftime('%B')%> <%= @regapp.created_at.strftime('%-d')%>, <%= @regapp.created_at.strftime('%Y')%></p><br>
+  
+</div>
+</div>
+</div>

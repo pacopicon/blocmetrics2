@@ -15,7 +15,7 @@
 
       <div class="pull-right user-info">
         <% if current_user %>
-          <%= link_to (current_user.name || current_user.email)+"'s profile", @user, class: 'btn btn-info' %>      <%= link_to "sign out", destroy_user_session_path, class: 'btn btn-info', method: :delete %>
+          <%= link_to (current_user.name || current_user.email)+"'s profile", current_user, class: 'btn btn-info' %>      <%= link_to "sign out", destroy_user_session_path, class: 'btn btn-info', method: :delete %>
         <% else %>
           <%= link_to "sign in", new_user_session_path, class: 'btn btn-info' %>
         <% end %>
