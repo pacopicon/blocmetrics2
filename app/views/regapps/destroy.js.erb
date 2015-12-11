@@ -1,6 +1,6 @@
 <% if @regapp.destroyed? %>
 $('#regapp-' +<%= @regapp.id %>).fadeOut('slow');
-$('.js-regapps-count').html("number of regapps registered:  <%= pluralize(@regapp.user.regapps.count, 'registered applications') %>");
+$('.js-regapps-count').html("<%= pluralize(@regapp.user.regapps.count, 'registered applications') %>");
 <% else %>
 $('#regapp-' +<%= @regapp.id %>).prepend("<div class='alert-danger'><%= flash[:error] %></div>");
 <% end %>

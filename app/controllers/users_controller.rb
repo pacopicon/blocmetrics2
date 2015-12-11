@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @regapp = current_user.regapps.find(params[:id])
-    @regapp.user = @user
+    @regapp = current_user.regapps
     @regapps = @user.regapps
   end
 
@@ -16,9 +15,6 @@ class UsersController < ApplicationController
       flash[:error] = "Invalid user information"
       redirect_to edit_user_registration_path
     end
-  end
-
-  def destroy
   end
 
   private

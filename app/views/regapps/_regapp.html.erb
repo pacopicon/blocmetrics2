@@ -1,3 +1,4 @@
 <%= content_tag :div, class: 'media', id: "regapp-#{regapp.id}" do %>
-  <h4><%= link_to regapp.name, [regapp.user, regapp] %> dash (<%= link_to regapp.url, "http://#{regapp.url}" %>)</h4>
+  <h4><%= link_to regapp.name, [regapp.user, regapp] %> dash
+  <%= link_to "", user_regapp_path(@user, @regapp), class: 'glyphicon glyphicon-remove', method: :delete, remote: true %></h4>
 <% end %>

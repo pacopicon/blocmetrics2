@@ -5,9 +5,9 @@
     <%= pluralize(@user.regapps.count, 'registered applications') %>
   </div>
   <div class="js-regapps">
-    <%= render partial: 'regapps/regapp', collection: @regapps %>
+    <%= render partial: 'regapps/regapp', collection: @regapps, locals: {user: @user} %>
   </div>
 <div class="new-regapp">
-<%= render partial: 'regapps/form', locals: {user: @regapp.user, regapp: @regapp} %>
+<%= render partial: 'regapps/form', locals: {user: @user, regapp: @regapp} %>
 </div>
 </div>
