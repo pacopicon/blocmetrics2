@@ -53,10 +53,13 @@ class RegappsController < ApplicationController
 
     if @regapp.destroy
       flash[:notice] = "\"#{@regapp.name}\" has successfully been deleted."
-      redirect_to user_path
     else
       flash[:error] = "There was an error deleting this application. Please try again!"
-      render :show
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
     end
 
   end

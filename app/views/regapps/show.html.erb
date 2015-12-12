@@ -3,9 +3,9 @@
     <div class="col-md-8">
       <div class="body">
   <%= @regapp.name %><br>
-  <%= link_to @regapp.url, "http://#{@regapp.url}" %><br>
+  <%= link_to @regapp.url, "http://#{@regapp.url}" %> | <%= link_to "", user_regapp_path(@regapp.user, @regapp), class: 'glyphicon glyphicon-remove', method: :delete %><br>
   tracking since <%= @regapp.created_at.strftime('%A')%>, <%= @regapp.created_at.strftime('%B')%> <%= @regapp.created_at.strftime('%-d')%>, <%= @regapp.created_at.strftime('%Y')%></p><br>
-  <%= link_to "", user_regapp_path(@user, @regapp), class: 'glyphicon glyphicon-remove', method: :delete %>
+
 
 </div>
 </div>
