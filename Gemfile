@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'faker', '~> 1.6.1'
+
 gem 'will_paginate', '~> 3.0.5'
 
 gem 'bootstrap-sass'

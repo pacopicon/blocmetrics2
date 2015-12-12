@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:update, :show] do
-    resources :regapps
+    resources :regapps do
+      resources :events, only: [:create, :destroy]
+    end
   end
 
   root to: "welcome#index"
