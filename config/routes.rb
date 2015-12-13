@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:update, :show] do
-    resources :regapps do
-      resources :events, only: [:create, :destroy]
-    end
+    resources :regapps
+  end
+
+  namespace :api, defaults: {format: :json} do
+    match '/events', to: 'events#index', via: [:options]
+    resources :events, only: [:create]
   end
 
   root to: "welcome#index"
