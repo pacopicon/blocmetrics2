@@ -1,9 +1,7 @@
 <div class="js-regapps">
-<% if user %>
   <%= form_for [user, Regapp.new], remote: true do |f| %>
     <%= f.text_field :name, placeholder: "Register app name" %>
     <%= f.text_field :url, placeholder: "Register app address" %>
     <%= f.submit "Save item", class: 'btn btn-success' %>
   <% end %>
-<% end %>
 </div>

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @regapp = current_user.regapps
+    @regapp = current_user.regapps.find(params[:id])
     @regapps = @user.regapps
   end
 

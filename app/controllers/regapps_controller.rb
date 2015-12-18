@@ -7,7 +7,6 @@ class RegappsController < ApplicationController
   def show
     @user = current_user
     @regapp = current_user.regapps.find(params[:id])
-    @regapp.user = current_user
     @events = @regapp.events.group(:name)
 
   end
