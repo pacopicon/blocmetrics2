@@ -4,11 +4,24 @@
       <div class="body">
         <%= @regapp.name %><br>
          <!-- | <%= link_to "", user_regapp_path(@regapp.user, @regapp), class: 'glyphicon glyphicon-remove', method: :delete %> -->
-        <%= link_to @regapp.url, "http://#{@regapp.url}" %><br>
+        <%= link_to @regapp.url, "#{@regapp.url}" %><br>
         tracking since <%= @regapp.created_at.strftime('%A')%>, <%= @regapp.created_at.strftime('%B')%> <%= @regapp.created_at.strftime('%-d')%>, <%= @regapp.created_at.strftime('%Y')%></p><br>
-        <%= pluralize(@regapp.events.count, 'application events')%> currently tracked: (NB: the <strong>group</strong> method in <strong>regapps_controller</strong> gets rid of event duplicates, ergo: the event count and the # of visible events may differ)
-        <%= render partial: 'events/event', collection: @events %><br>
 
+        Analytics:
+
+        <% @events.each do |event| %>
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <ul>
+                  <li><strong><%= event.name %></strong>: <%= @regapp.events.count %></li>
+                </ul>
+
+                <%= pie_chart @regapp.events.group(:name).count %>
+              </h4>
+            </div>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

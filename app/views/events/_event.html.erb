@@ -2,3 +2,8 @@
 <!-- or: <div class="media" id="event-<%= event.id %>"> -->
 tracking <strong><%= event.name %></strong>
 <% end %>
+
+
+# this goes in regapp#show:
+
+<%= render partial: 'events/event', collection: @events %>

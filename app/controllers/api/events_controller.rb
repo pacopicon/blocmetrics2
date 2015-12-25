@@ -9,14 +9,14 @@ class API::EventsController < ApplicationController
   end
 
   skip_before_action :verify_authenticity_token   # THIS IS ONLY IN DEVELOPMENT!  skipping authenticity token verification in production renders this API vulnerable to potential CSRF attacks.
-  def index
-    render nothing: true
-  end
 
   def create
+    # Rails.logger.info "REQUEST: #{request.inspect}"
     @regapp = Regapp.find_by(url: request.env['HTTP_ORIGIN'])
 
-    if @regapp != nil
+    if @regapp.nil?
+      render json: "Unregistered application, (pickaboo :-P)", status: :unprocessable_entity
+    else
       @event = @regapp.events.build(event_params)
 
       if @event.save
@@ -24,16 +24,16 @@ class API::EventsController < ApplicationController
       else
         render @event.errors, status: :unprocessable_entity
       end
-
-    else
-      render json: "Unregistered application", status: :unprocessable_entity
     end
+  end
 
+  def index
+    render nothing: true
   end
 
   private
   def event_params
-    params.permit(:name)
+    params.permit(:name, :instance)
   end
 
 end

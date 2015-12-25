@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+# for analytics
+gem 'groupdate'
+gem 'chartkick'
+
 gem 'faker', '~> 1.6.1'
 
 gem 'will_paginate', '~> 3.0.5'
