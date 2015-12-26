@@ -18,11 +18,10 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'puma'
   gem 'binding_of_caller'
   gem 'better_errors'
 end
-
-gem 'puma'
 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

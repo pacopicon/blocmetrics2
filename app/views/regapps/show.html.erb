@@ -1,3 +1,4 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <div class="regapp_show">
   <div class="row">
     <div class="col-md-8">
@@ -14,10 +15,11 @@
             <div class="media-body">
               <h4 class="media-heading">
                 <ul>
-                  <li><strong><%= event.name %></strong>: <%= @regapp.events.count %></li>
+                  <li><strong><%= event.name %></strong>: <%=  @regapp.events.group(:name).count %></li>
                 </ul>
 
                 <%= pie_chart @regapp.events.group(:name).count %>
+                
               </h4>
             </div>
           </div>
