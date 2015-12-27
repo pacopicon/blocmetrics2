@@ -7,4 +7,4 @@ var blocmetrics_page_load = {};
     request.send(JSON.stringify(event));
   };
 
-blocmetrics_page_load.report("page_load");
+blocmetrics_page_load.report("page load");
