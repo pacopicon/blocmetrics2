@@ -15,23 +15,18 @@
             <div class="media-body">
               <h4 class="media-heading">
                 <ul>
-                  <% [] << @regapp.events(:name).sort %>
-                  <%= [][0] %>
-                  <%= [][1] %>
-                  <%= [][2] %>
-                  <%= [][3] %>
-                  <%= [][4] %>
-                  <%= [][5] %>
-                  <%= [][6] %>
-
-
-                  <li><strong><%= @regapp.events.uniq.count %></strong></li>
-                  <li><strong><%= @regapp.events[0].name %></strong>: <%= @regapp.events.where(name: "#{@regapp.events[0].name}").count %></li>
-                  <li><strong><%= @regapp.events[3].name %></strong>: <%= @regapp.events.where(name: "#{@regapp.events[3].name}").count %></li>
-                  <li><strong><%= @regapp.events[4].name %></strong>: <%= @regapp.events.where(name: "#{@regapp.events[4].name}").count %></li>
+                  <li><strong><%= Event.all.find_by(name: "clicks").name %></strong>: <%= Event.all.where(name: "clicks").count %></li>
+                  <li><strong><%= Event.all.find_by(name: "page load").name %></strong>: <%= Event.all.where(name: "page load").count %></li>
+                  <li><strong><%= Event.all.find_by(name: "items created").name %></strong>: <%= Event.all.where(name: "items created").count %></li>
                 </ul>
 
                 <%= pie_chart @regapp.events.group(:name).count %>
+
+                <%= column_chart @regapp.events.group(:name).count %>
+
+                <%= line_chart @regapp.events.group_by_day(:created_at).count %>
+
+
 
               </h4>
             </div>
